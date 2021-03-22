@@ -1,0 +1,68 @@
+<?xml version="1.0"?>
+
+<page xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" layout="checkout" xsi:noNamespaceSchemaLocation="urn:magento:framework:View/Layout/etc/page_configuration.xsd">
+    <body>
+        <referenceContainer name="content">
+            <block class="Project\Components\Block\Index" name="components.root" template="Project_Components::index.phtml" cacheable="false">
+                <arguments>
+                    <argument name="jsLayout" xsi:type="array">
+                        <item name="components" xsi:type="array">
+                            <item name="index" xsi:type="array">
+                                <item name="component" xsi:type="string">uiComponent</item>
+                                <item name="config" xsi:type="array">
+                                    <item name="template" xsi:type="string">Project_Components/index</item>
+                                </item>
+                                <item name="children" xsi:type="array">
+                                    <item name="root" xsi:type="array">
+                                        <item name="component" xsi:type="string">Project_Components/js/view/checkbox</item>
+                                        <item name="displayArea" xsi:type="string">index</item>
+                                        <item name="config" xsi:type="array">
+                                            <item name="template" xsi:type="string">Project_Components/element/checkbox</item>
+                                            <item name="label" xsi:type="string">Show importsComponent</item>
+                                        </item>
+                                        <item name="children" xsi:type="array">
+                                            <item name="exportsComponent" xsi:type="array">
+                                                <item name="component" xsi:type="string">Project_Components/js/view/input</item>
+                                                <item name="displayArea" xsi:type="string">root</item>
+                                                <item name="config" xsi:type="array">
+                                                    <item name="template" xsi:type="string">Project_Components/element/input</item>
+                                                    <item name="label" xsi:type="string">exportsComponent label</item>
+                                                    <item name="visible" xsi:type="string">true</item>
+                                                </item>
+                                            </item>
+                                            <item name="importsComponent" xsi:type="array">
+                                                <item name="component" xsi:type="string">Project_Components/js/view/input</item>
+                                                <item name="displayArea" xsi:type="string">root</item>
+                                                <item name="config" xsi:type="array">
+                                                    <item name="template" xsi:type="string">Project_Components/element/input</item>
+                                                    <item name="label" xsi:type="string">importsComponent label (here will be exportsComponent name)</item>
+                                                    <item name="imports" xsi:type="array">
+                                                        <item name="value" xsi:type="string">${$.parentName}.exportsComponent:someObservable</item>
+                                                    </item>
+                                                    <item name="links" xsi:type="array">
+                                                        <item name="visible" xsi:type="string">${$.parentName}:checked</item>
+                                                    </item>
+                                                </item>
+                                            </item>
+                                            <item name="listensComponent" xsi:type="array">
+                                                <item name="component" xsi:type="string">Project_Components/js/view/text</item>
+                                                <item name="displayArea" xsi:type="string">root</item>
+                                                <item name="config" xsi:type="array">
+                                                    <item name="template" xsi:type="string">Project_Components/element/text</item>
+                                                    <item name="visible" xsi:type="string">true</item>
+                                                    <item name="listens" xsi:type="array">
+                                                        <item name="${$.parentName}.exportsComponent:value" xsi:type="string">handleValueChange</item>
+                                                    </item>
+                                                </item>
+                                            </item>
+                                        </item>
+                                    </item>
+                                </item>
+                            </item>
+                        </item>
+                    </argument>
+                </arguments>
+            </block>
+        </referenceContainer>
+    </body>
+</page>

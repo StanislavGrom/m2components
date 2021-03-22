@@ -1,0 +1,15 @@
+<?php
+ /** @var \Project\Components\Block\Index $block */
+
+?>
+<div id="index" data-bind="scope:'index'" class="checkout-container">
+    <!-- ko template: getTemplate() --><!-- /ko -->
+    <script type="text/x-magento-init">
+        {
+            "#index": {
+                "Magento_Ui/js/core/app": <?= /* @noEscape */ $block->getJsLayout() ?>
+            }
+        }
+    </script>
+</div>
+
